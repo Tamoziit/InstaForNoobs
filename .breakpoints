@@ -1,0 +1,82 @@
+{
+  "files": {
+    "src/App.jsx": [
+      {
+        "id": "1d122295-615d-4cc1-9c85-01e9e9369cfb",
+        "line": 15,
+        "version": 455,
+        "index": 540
+      },
+      {
+        "id": "8115b86a-332d-419e-9653-926b88e1b6c4",
+        "line": 21,
+        "version": 455,
+        "index": 701
+      }
+    ],
+    "src/Layouts/PageLayout/PageLayout.jsx": [
+      {
+        "id": "f8eed264-ccb9-4e7e-9bb7-d2e0c96bec6a",
+        "line": 27,
+        "version": 1712,
+        "index": 1493
+      }
+    ],
+    "src/components/Comment/Comment.jsx": [
+      {
+        "id": "07701f42-7128-4f12-adde-d2d92a71fd99",
+        "line": 19,
+        "version": 1188,
+        "index": 652
+      }
+    ],
+    "src/components/FeedPosts/FeedPosts.jsx": [
+      {
+        "id": "f334d6f0-bd63-4821-8859-7d4cdcf21a1b",
+        "line": 37,
+        "version": 1687,
+        "index": 1280
+      }
+    ],
+    "src/components/Profile/ProfileHeader.jsx": [
+      {
+        "id": "38af96f2-b30d-486b-bf83-0fcab5d46f21",
+        "line": 10,
+        "version": 2518,
+        "index": 114
+      }
+    ],
+    "src/components/Sidebar/CreatePost.jsx": [
+      {
+        "id": "313205fc-5caa-41e0-88ce-228c723b98bc",
+        "line": 65,
+        "version": 3651,
+        "index": 1671
+      }
+    ],
+    "src/components/Sidebar/Sidebar.jsx": [
+      {
+        "id": "faa767ae-dcd5-4e14-8f27-2bae3c958e81",
+        "line": 16,
+        "version": 2035,
+        "index": 532
+      }
+    ],
+    "src/pages/HomePage/HomePage.jsx": [
+      {
+        "id": "3979c72f-442d-4989-8b70-d518696844e8",
+        "line": 14,
+        "version": 564,
+        "index": 400
+      }
+    ],
+    "src/utils/timeAgo.js": [
+      {
+        "id": "141ef262-102f-4737-9e90-c9cb8b474fd0",
+        "line": 5,
+        "version": 493,
+        "index": 126
+      }
+    ]
+  }
+}
