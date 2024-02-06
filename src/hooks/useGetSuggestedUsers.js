@@ -2,14 +2,7 @@ import { useEffect, useState } from "react";
 import useAuthStore from "../store/authStore";
 import useShowToast from "./useShowToast";
 import { firestore } from "../firebase/firebase";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  limit,
-  orderBy,
-} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const useGetSuggestedUsers = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,20 +14,33 @@ const useGetSuggestedUsers = () => {
     const getSuggestedUsers = async () => {
       setIsLoading(true);
       try {
-        const usersRef = collection(firestore, "users");
-        const q = query(
-          usersRef,
-          where("uid", "not-in", [authUser.uid, ...authUser.following]), //to prevent suggesting ourselves & people we already follow in suggested users section. Also, following[] is an array --> putting it inside another array for checking makes it a nested array. In order to prevent this, we use ...authUser.following, which includes only the elements of following[], not the array itself.
-          orderBy("uid"),
-          limit(3),
+        const usersRef = query(
+          collection(firestore, "users"),
+          where("uid", "!=", authUser.uid),
         );
-        const querySnap = await getDocs(q);
+        const userDocs = await getDocs(usersRef);
         const users = [];
-        //Mapping Suggested users to users[] array
-        querySnap.forEach((doc) => {
+        //Mapping all users to users[] array
+        userDocs.forEach((doc) => {
           users.push({ ...doc.data(), id: doc.id });
         });
-        setSuggestedUsers(users);
+        //Filter out users already followed by authUser
+        const filteredUsers = users.filter(
+          (user) => !authUser.following.includes(user.uid),
+        );
+        //Sort users by number of mutual followers
+        const sortedUsers = filteredUsers.sort((a, b) => {
+          const mutualFollowersA = a.followers.filter((follower) =>
+            authUser.following.includes(follower),
+          ).length;
+          const mutualFollowersB = b.followers.filter((follower) =>
+            authUser.following.includes(follower),
+          ).length;
+          return mutualFollowersB - mutualFollowersA;
+        });
+        //Get the top 3 users
+        const suggestedUsers = sortedUsers.slice(0, 3);
+        setSuggestedUsers(suggestedUsers);
       } catch (error) {
         showToast("Error", error.message, "error");
       } finally {

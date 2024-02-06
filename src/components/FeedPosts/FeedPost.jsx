@@ -19,8 +19,6 @@ const FeedPost = ({ post }) => {
         <Image
           src={post.imageURL}
           alt={"FEED POST IMG"}
-          minH={"30vh"}
-          minW={"60vh"}
           alignItems={"center"}
           justifyContent={"center"}
         />

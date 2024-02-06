@@ -10,7 +10,6 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  Avatar,
   Divider,
   VStack,
 } from "@chakra-ui/react";
@@ -126,6 +125,7 @@ const ProfilePost = ({ post }) => {
               mx={"auto"}
               maxH={"90vh"}
               minH={"50vh"}
+              direction={{ base: "column", md: "row" }}
             >
               <Flex
                 borderRadius={4}
@@ -135,17 +135,34 @@ const ProfilePost = ({ post }) => {
                 flex={1.5}
                 justifyContent={"center"}
                 alignItems={"center"}
+                position={{ base: "relative", md: "static" }}
               >
                 <Image src={post.imageURL} alt="profile post" />
+                {authUser?.uid === userProfile.uid && (
+                  <Button
+                    size={"sm"}
+                    bg={"transparent"}
+                    _hover={{ bg: "whiteAlpha.300", color: "red.600" }}
+                    borderRadius={4}
+                    p={1}
+                    position={"absolute"}
+                    top={2}
+                    left={2}
+                    onClick={handleDeletePost}
+                    isLoading={isDeleting}
+                    display={{ base: "flex", md: "none" }}
+                  >
+                    <MdDelete size={20} cursor={"pointer"} />
+                  </Button>
+                )}
               </Flex>
               <Flex
                 flex={1}
                 flexDir={"column"}
                 px={10}
-                display={{ base: "none", md: "flex" }}
+                display={{ base: "flex", md: "flex" }}
               >
                 <Flex alignItems={"center"} justifyContent={"space-between"}>
-
                   {/*Optional designing stuffs which I didn't like*/}
                   {/*<Flex alignItems={"center"} gap={4}>
                     <Avatar
@@ -170,6 +187,7 @@ const ProfilePost = ({ post }) => {
                       p={1}
                       onClick={handleDeletePost}
                       isLoading={isDeleting}
+                      display={{ base: "none", md: "flex" }}
                     >
                       <MdDelete size={20} cursor={"pointer"} />
                     </Button>
@@ -178,18 +196,15 @@ const ProfilePost = ({ post }) => {
                 <Divider my={4} bg={"gray.700"} />
                 <VStack
                   w="full"
-                  alignItems={"start"}
-                  maxH={"350px"}
-                  overflowY={"auto"}
+                  alignItems="start"
+                  maxH="350px"
+                  overflowY="auto"
                 >
-
-                  {/*Comments*/}
-                  {post.comments.map((comment) => (
-                    <Comment key={comment.id} comment={comment} />
+                  {post.comments.map((comment, index) => (
+                    <Comment key={`${comment.id}-${index}`} comment={comment} />
                   ))}
                 </VStack>
                 {post.comments.length > 0 && <Divider my={4} bg={"gray.700"} />}
-
                 <PostFooter isProfilePage={true} post={post} />
               </Flex>
             </Flex>

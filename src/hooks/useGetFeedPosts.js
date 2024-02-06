@@ -21,9 +21,10 @@ const useGetFeedPosts = () => {
         setPosts([]);
         return;
       }
+
       const q = query(
         collection(firestore, "posts"),
-        where("createdBy", "in", authUser.following),
+        where("createdBy", "in", authUser.following)
       ); //Querying to posts by users, which are followed by authorized users
       try {
         const querySnapshot = await getDocs(q);
@@ -34,9 +35,12 @@ const useGetFeedPosts = () => {
         });
 
         feedPosts.sort((a, b) => b.createdAt - a.createdAt); //Newest first sort
+
         setPosts(feedPosts);
       } catch (error) {
-        showToast("Error", error.message, "error");
+        if (error.message !== "'NOT_IN' supports up to 10 comparison values.") {
+          showToast("Error", error.message, "error");
+        }
       } finally {
         setIsLoading(false);
       }
