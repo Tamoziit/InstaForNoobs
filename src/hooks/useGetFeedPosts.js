@@ -24,7 +24,7 @@ const useGetFeedPosts = () => {
 
       const q = query(
         collection(firestore, "posts"),
-        where("createdBy", "in", authUser.following)
+        where("createdBy", "in", authUser.following),
       ); //Querying to posts by users, which are followed by authorized users
       try {
         const querySnapshot = await getDocs(q);

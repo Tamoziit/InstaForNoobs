@@ -10,7 +10,14 @@ const SuggestedHeader = () => {
   if (!authUser) return null;
 
   return (
-    <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
+    <Flex
+      justifyContent={"space-between"}
+      alignItems={"center"}
+      w={"full"}
+      position={"sticky"}
+      top={0}
+      right={0}
+    >
       <Flex alignItems={"center"} gap={2}>
         <Link to={`${authUser.username}`}>
           <Avatar size={"lg"} src={authUser.profilePicURL} />

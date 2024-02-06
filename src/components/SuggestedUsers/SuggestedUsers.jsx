@@ -9,7 +9,7 @@ const SuggestedUsers = () => {
   if (isLoading) return null;
 
   return (
-    <VStack py={8} px={6} gap={4}>
+    <VStack py={8} px={6} gap={4} top={0} right={0} position={"sticky"}>
       <SuggestedHeader />
       {suggestedUsers.length !== 0 && (
         <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>

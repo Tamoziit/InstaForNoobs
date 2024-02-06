@@ -28,7 +28,6 @@ const Search = () => {
     e.preventDefault();
     getUserProfile(searchRef.current.value); //gets the user with the searched username stored in searchRef
   };
-  console.log(user);
 
   return (
     <>
@@ -59,7 +58,7 @@ const Search = () => {
       <Modal isOpen={isOpen} onClose={onClose} motionPreset="slideInLeft">
         <ModalOverlay />
         <ModalContent bg={"black"} border={"1px solid gray"} maxW={"400px"}>
-          <ModalHeader>Serach User</ModalHeader>
+          <ModalHeader>Search User</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form onSubmit={handleSearchUser}>

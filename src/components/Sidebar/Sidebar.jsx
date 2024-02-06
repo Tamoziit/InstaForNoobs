@@ -18,6 +18,7 @@ const Sidebar = () => {
       top={0}
       left={0}
       px={{ base: 2, md: 4 }}
+      width={{ base: 14, md: "full" }}
     >
       {/* Sending svg logo to / location - home page as RouterLink */}
       <Flex direction={"column"} gap={10} w="full" height={"full"}>
