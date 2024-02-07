@@ -26,7 +26,7 @@
 - Developing interactive & responsive UI design using React.
 - Using UI/UX framework "Chakra UI".
 - Handling Backend as a Service platform - Firebase.
-- Handling Firebase Authentication, Firebase Database, Storage and setting up Firbase security rules.
+- Handling Firebase Authentication, Firebase Database, Storage and setting up Firebase security rules.
 - Developing custom Hooks to carry out different functionalities like following, searching, creating posts etc. within the website.
 - Version Control using GitHub.
 - Deploying the website using Vercel.
